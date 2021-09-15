@@ -14,5 +14,16 @@ module.exports = {
     plugins: [
         '@typescript-eslint',
     ],
-    rules: {},
+    rules: {
+        semi: ['error', 'always'],
+        quotes: ['error', 'single'],
+        'quote-props': ['error', 'as-needed'],
+        'no-useless-constructor': ['off'],
+        indent: ['error', 4],
+        'import/no-unresolved': ['off'],
+        'import/extensions': ['off'],
+        'eol-last': ['off'],
+        'comma-dangle': ['off'],
+        'import/prefer-default-export': ['off']
+    },
 };

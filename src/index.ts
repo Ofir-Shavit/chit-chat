@@ -1,8 +1,6 @@
-import server from './loaders/application';
+import { application as server } from './loaders';
+import config from './config';
 
-const port = 8080;
-
-server.listen(port, () => {
-  console.log(`App is listening on port ${port}!`);
+server.listen(config.port, () => {
+    console.log(`App is listening on port ${config.port}!`);
 });
-
