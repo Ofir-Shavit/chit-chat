@@ -8,6 +8,12 @@ import session from 'express-session';
 import config from '../config';
 import router from '../api';
 
+declare module 'express-session' {
+    interface Session {
+        userId: string;
+    }
+}
+
 const app = express();
 
 app.use(morgan('dev'));

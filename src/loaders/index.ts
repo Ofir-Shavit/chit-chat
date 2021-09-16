@@ -1,3 +1,4 @@
 import application from './application';
+import connectToDatabase from './database';
 
-export { application };
+export { application, connectToDatabase };

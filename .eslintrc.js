@@ -24,6 +24,8 @@ module.exports = {
         'import/extensions': ['off'],
         'eol-last': ['off'],
         'comma-dangle': ['off'],
-        'import/prefer-default-export': ['off']
+        'import/prefer-default-export': ['off'],
+        'object-curly-newline': ['off'],
+        'no-console': ['off']
     },
 };
