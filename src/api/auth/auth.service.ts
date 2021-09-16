@@ -15,22 +15,10 @@ interface User extends UserProps {
 }
 
 const upsertUser = async (userProps: UserProps): Promise<User> => {
-    // const filter = { email: userProps.email };
-    // const user = await UserModel.findOneAndUpdate(filter, userProps, { upsert: true });
-    // const {
-    //     _id,
-    //     email,
-    //     name,
-    //     picture
-    // } = user;
-    return {
-        // id: _id,
-        // email,
-        // name,
-        // picture
-        id: '1',
-        ...userProps
-    };
+    const filter = { email: userProps.email };
+    const user = await UserModel.findOneAndUpdate(filter, userProps, { upsert: true });
+    const { id, email, name, picture } = user;
+    return { id, email, name, picture };
 };
 
 const login = async (tokenId: string): Promise<User> => {
@@ -49,11 +37,12 @@ const login = async (tokenId: string): Promise<User> => {
         picture
     } = tokenPayload;
 
-    return upsertUser({
+    const user = await upsertUser({
         name,
         email,
         picture
     });
+    return user;
 };
 
 export default { login };

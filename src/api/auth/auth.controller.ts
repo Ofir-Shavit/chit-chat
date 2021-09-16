@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import config from '../../config';
 import authService from './auth.service';
 
 const login = async (req: Request, res: Response) => {
     const { tokenId } = req.body;
-    console.log(req.session.userId);
     try {
         const user = await authService.login(tokenId);
-        req.session.userId = user.id;
-
+        const token = jwt.sign(user, config.secret);
+        res.cookie('token', token, { httpOnly: true });
         res.status(201)
             .json(user);
     } catch (error) {
